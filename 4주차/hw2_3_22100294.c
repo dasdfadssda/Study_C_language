@@ -28,14 +28,14 @@ int main() {
 
         while (x > 0) {
             binary[i] = (x % 2) + '0'; // 이진수의 각 자릿수를 문자로 변환하여 배열에 저장
-            x /= 2;
+            x /= 2; 
             i++;
         }
 
         binary[i + 1] = '\0'; // 널 문자를 배열의 끝에 추가
     }
 
-    printf("intermediate result = %s (2)\n", binary);
+printf("intermediate result = %s (2)\n", binary); 
 
     // 이진 문자열을 뒤집기
     ReverseString(binary);
