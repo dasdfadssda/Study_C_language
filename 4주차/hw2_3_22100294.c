@@ -4,7 +4,7 @@
 // Function
 void ReverseString(char str[])
 {
-    int len = strlen(str);
+    int len = strlen(str); // to know length
     int i;
     for (i = 0; i < len / 2; i++)
     {
@@ -22,7 +22,6 @@ int main()
     printf("Enter an integer: ");
     scanf("%d", &x);
 
-    int originalX = x; // Move the original integer value
 
     char binary[33]; // Array to Move the 32-bit binary string
 
@@ -45,13 +44,13 @@ int main()
 
         binary[i + 1] = '\0'; // Add a null value at the end of the array
     }
-
+    // display the intermediate result
     printf("Intermediate result = %s (2)\n", binary);
 
-    // Reverse the binary string
+    // horizontally flip the binary string
     ReverseString(binary);
-
-    printf("%d (10) = %s (2)\n", originalX, binary);
+    // display the result as a string
+    printf("%d (10) = %s (2)\n", x, binary);
 
     return 0;
 }
