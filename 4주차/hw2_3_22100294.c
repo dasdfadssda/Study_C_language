@@ -21,6 +21,7 @@ int main()
     // Get input from the user
     printf("Input an integer: ");
     scanf("%d", &x);
+    int OriginX = x;
 
 
     char binary[33]; // Array to Move the 32-bit binary string
@@ -50,7 +51,7 @@ int main()
     // horizontally flip the binary string
     ReverseString(binary);
     // display the result as a string
-    printf("%d (10) = %s (2)\n", x, binary);
+    printf("%d (10) = %s (2)\n", OriginX, binary);
 
     return 0;
 }
