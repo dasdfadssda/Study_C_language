@@ -19,7 +19,7 @@ int main()
     int x;
 
     // Get input from the user
-    printf("Enter an integer: ");
+    printf("Input an integer: ");
     scanf("%d", &x);
 
 
