@@ -1,43 +1,54 @@
 #include <stdio.h>
 #include <string.h>
 
-void ReverseString(char str[]) {
+// Function
+void ReverseString(char str[])
+{
     int len = strlen(str);
     int i;
-    for (i = 0; i < len / 2; i++) {
+    for (i = 0; i < len / 2; i++)
+    {
         char temp = str[i];
         str[i] = str[len - i - 1];
         str[len - i - 1] = temp;
     }
 }
 
-int main() {
+int main()
+{
     int x;
-    printf("정수를 입력하세요: ");
+
+    // Get input from the user
+    printf("Enter an integer: ");
     scanf("%d", &x);
 
-    int originalX = x; // 원래의 정수 값을 저장
+    int originalX = x; // Move the original integer value
 
-    char binary[33]; // 32비트 이진 문자열을 저장할 배열 (마지막에 널 문자를 포함하기 위해 33개의 공간을 할당)
+    char binary[33]; // Array to Move the 32-bit binary string
 
-    if (x == 0) {
+    // Add a null terminator to end the string
+    if (x == 0)
+    {
         binary[0] = '0';
-        binary[1] = '0'; // 널 문자를 추가하여 문자열을 종료
-    } else {
+        binary[1] = '\0';
+    }
+    else
+    {
         int i = 0;
-
-        while (x > 0) {
-            binary[i] = (x % 2) + '0'; // 이진수의 각 자릿수를 문자로 변환하여 배열에 저장
-            x /= 2; 
+        // Convert each binary digit to a character and Move in the array
+        while (x > 0)
+        {
+            binary[i] = (x % 2) + '0';
+            x /= 2;
             i++;
         }
 
-        binary[i + 1] = '\0'; // 널 문자를 배열의 끝에 추가
+        binary[i + 1] = '\0'; // Add a null value at the end of the array
     }
 
-printf("intermediate result = %s (2)\n", binary); 
+    printf("Intermediate result = %s (2)\n", binary);
 
-    // 이진 문자열을 뒤집기
+    // Reverse the binary string
     ReverseString(binary);
 
     printf("%d (10) = %s (2)\n", originalX, binary);
