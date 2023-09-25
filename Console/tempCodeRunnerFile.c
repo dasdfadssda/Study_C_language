@@ -1,1 +1,1 @@
-gcc console_demo1.c Console.c -D_MAC
+gcc console_demo2.c Console.c -D_MAC
