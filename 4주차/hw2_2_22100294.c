@@ -25,7 +25,7 @@ int main()
     birthdayNum[1] = (year % 10) + '0';
 
     // save month
-    birthdayNum[2] = (month / 10) + '0';
+    birthdayNum[2] = (month / 10) + '0';ㄴ
     birthdayNum[3] = (month % 10) + '0';
 
     // save day
@@ -37,7 +37,6 @@ int main()
 
     // result
     printf("birthday in YYMMDD format = %s\n", birthdayNum);
-
 
     return 0;
 }
