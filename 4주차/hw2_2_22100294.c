@@ -38,5 +38,6 @@ int main()
     // result
     printf("birthday in YYMMDD format = %s\n", birthdayNum);
 
+
     return 0;
 }
