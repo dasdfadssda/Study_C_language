@@ -58,13 +58,13 @@ int RotateDigit(int x, int no_digit, int dir)
     }
 
     if (dir == LEFT)
-    { // Left rotation
+    { // Left rotation code
         int msd = x / power;
         int rest = x % power;
         x = rest * 10 + msd;
     }
     else if (dir == RIGHT)
-    { // Right rotation
+    { // Right rotation code
         int lsd = x % 10;
         int rest = x / 10;
         x = lsd * power + rest;
