@@ -13,7 +13,7 @@ int main()
     printf("Enter a string: ");
     fgets(inputString, sizeof(inputString), stdin);
 
-    // Remove newline characters from following lines
+    // Remove newline characters from following line
     if (inputString[strlen(inputString) - 1] == '\n')
     {
         inputString[strlen(inputString) - 1] = '\0';
@@ -21,6 +21,7 @@ int main()
 
     CountCharacter(inputString, &upperCount, &lowerCount, &digitCount, &spaceCount);
 
+    // Get Value
     printf("Input string = \"%s\"\n", inputString);
     printf("The input string contains:\n");
     printf("%d uppercase characters\n", upperCount);
@@ -38,6 +39,8 @@ void CountCharacter(char str[], int *no_upper, int *no_lower, int *no_digit, int
     *no_digit = 0;
     *no_space = 0;
 
+
+    // choose values and classify
     for (int i = 0; str[i] != '\0'; i++)
     {
         if (isupper(str[i]))

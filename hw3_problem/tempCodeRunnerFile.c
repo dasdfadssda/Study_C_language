@@ -10,7 +10,6 @@ int main()
 {
     int x = 0;
 
-     // Get Value
     printf("Input an integer: ");
     scanf("%d", &x);
 
