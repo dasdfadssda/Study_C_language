@@ -19,7 +19,7 @@ int main()
     average = (double)sum / 10;
 
     // Calculate the variance
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++)c
     {
         variance += pow(numbers[i] - average, 2);
     }
