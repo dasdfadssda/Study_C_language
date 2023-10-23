@@ -33,3 +33,6 @@ int main()
 
     return 0;
 }
+
+
+  // convert this into python without explanation
