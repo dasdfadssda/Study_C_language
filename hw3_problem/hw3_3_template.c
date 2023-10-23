@@ -60,7 +60,6 @@ int main()
     return 0;
 }
 
-// 별표를 움직이는 함수
 void MoveStar(int x1, int y1, int x2, int y2, int delay)
 {
     int dx = ABS(x1 - x2);
@@ -76,10 +75,10 @@ void MoveStar(int x1, int y1, int x2, int y2, int delay)
         int y = ((dist - t) * y1 + t * y2) / (float)dist;
 
         gotoxy(prevx, prevy);
-        putchar(' '); // 이전 위치를 비우기
+        putchar(' '); 
 
         gotoxy(x, y);
-        putchar('*'); // 새로운 별표 표시
+        putchar('*'); 
 
         gotoxy(1, screen_height);
         fflush(stdout);
@@ -90,7 +89,6 @@ void MoveStar(int x1, int y1, int x2, int y2, int delay)
         MySleep(delay);
     }
 
-    // 마지막 별표 삭제
     gotoxy(prevx, prevy);
     putchar(' ');
 }

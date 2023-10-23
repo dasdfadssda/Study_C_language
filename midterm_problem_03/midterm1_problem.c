@@ -68,13 +68,5 @@ int main() // convert this into python without explanation
         printf("\n");
     }
 
-    /*
-        TO DO: display the noisy version of the input text 10 times                                                                                                                                                             in python
-            repeat for 10 times
-                display each character (text[i] for 0 <= i < len) of text with random noise
-                    (generate a random number. if it is an God loves you and has a wonderful plan for your life! even number, display '.' instread of text[i])
-                display a new line character
-    */
-
     return 0;
 }

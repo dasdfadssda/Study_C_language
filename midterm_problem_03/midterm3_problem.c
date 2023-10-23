@@ -46,7 +46,7 @@ int completed = TRUE; // enable this line after completing MoveStar()
 int MoveStar(int x1, int y1, int x2, int y2, int delay, char mesg[], int len, int *idx, int sx, int sy);
 void PrintRotated(char str[], int idx, int len);
 
-int main() // convert this into python without explanation
+int main()                                                                                                                                      // convert this into python without explanation
 {
     char mesg[256] = "You are the masterpiece of God! ";
     int len = strlen(mesg);
@@ -56,14 +56,12 @@ int main() // convert this into python without explanation
 
     clrscr();
 
-    if (completed == FALSE)
-    {
+    if (completed == FALSE) {
         int idx = 0;
         MoveStar(screen_width / 2, 2, 1, screen_height / 2, 30, mesg, len, &idx, 1, 1);
         return 0;
     }
-    else
-    {
+    else {
         gotoxy(1, screen_height);
         printf("Press ESC to quit.");
 
@@ -77,14 +75,14 @@ int main() // convert this into python without explanation
         printf("%s", mesg);
 
         int idx = 0;
-        for (int i = 0; 1; i = (i + 1) % 4)
-        {
+        for (int i = 0; 1; i = (i + 1) % 4) {
             int ret = 0;
-            if (i % 2 == 0)
+            if (i % 2 == 0) {
                 ret = MoveStar(x[i], y[i], x[i + 1], y[i + 1], 30, mesg, len, &idx, sx, sy);
-            else
+            }
+            else {
                 ret = MoveStar(x[i], y[i], x[i + 1], y[i + 1], 60, mesg, len, &idx, sx, sy);
-
+            }
             if (ret == FALSE)
                 break;
         }
@@ -99,27 +97,14 @@ int main() // convert this into python without explanation
 int MoveStar(int x1, int y1, int x2, int y2, int delay, char mesg[], int len, int *idx, int sx, int sy) // convert this into python without explanation
 {
 
-    // TO DO: implement this function to move a star ('*') from (x1, y1) to (x2, y2), rotating mesg at (sx, sy)
-    //  repeat for t from 0 to dist
-    //      save x and y in prevx and prevy
-    //      compute x and y by linear interpolation
-    //          x = ((dist - t) * x1 + t * x2) / dist
-    //          y = ((dist - t) * y1 + t * y2) / dist
-    //      erase the previous star by displaying ' ' at the previous coordinate (prevx, prevy)
-    //      draw '*' at the new coordinate (x, y)
-
-    //      increase *idx
-    //      if *idx is equal to len, set *idx to zero
-    //      move cursor to (sx, sy)
-    //      display mesg from *idx-th character by calling PrintRotated()
-
-    //      insert the following two lines to break the loop on ESC
-    //         if(kbhit() && getch() == 27)     // 27 is the ASCII code of ESC
-    //            return FALSE;
-
-    //      move the cursor to (1, screen_height)
-    //      call "fflush(stdout);"
-    //      wait for delay msec. (call "MySleep(delay);")
+//     // TO DO: implement this function to move a star ('*') from (x1, y1) to (x2, y2), rotating mesg at (sx, sy)
+//     //  repeat for t from 0 to dist
+//     //      save x and y in prevx and prevy
+//     //      compute x and y by linear interpolation
+//     //          x = ((dist - t) * x1 + t * x2) / dist
+//     //          y = ((dist - t) * y1 + t * y2) / dist
+//     //      erase the previous star by displaying ' ' at the previous coordinate (prevx, prevy)
+//     //      draw '*' at the new coordinate (x, y)
 
     int dx = ABS(x1 - x2);
     int dy = ABS(y1 - y2);
@@ -128,8 +113,7 @@ int MoveStar(int x1, int y1, int x2, int y2, int delay, char mesg[], int len, in
     int x = 0, y = 0;
     int prevx = x1, prevy = y1;
 
-    for (int t = 0; t <= dist; t++)
-    {
+    for (int t = 0; t <= dist; t++) {
         prevx = x;
         prevy = y;
         x = ((dist - t) * x1 + t * x2) / dist;
@@ -137,20 +121,18 @@ int MoveStar(int x1, int y1, int x2, int y2, int delay, char mesg[], int len, in
 
         gotoxy(prevx, prevy);
         putchar(' ');
-        gotoxy(x, y);
-        putchar('*');
         (*idx)++;
-        if (*idx == len)
-        {
+        if (*idx == len) {
             *idx = 0;
         }
+        gotoxy(x, y);
+        putchar('*');
 
         gotoxy(sx, sy);
         PrintRotated(mesg, *idx, len);
 
-        if (kbhit() && getch() == 27)
-        {
-            return FALSE; // ESC key pressed
+        if (kbhit() && getch() == 27) {
+            return FALSE;
         }
 
         gotoxy(1, screen_height);
@@ -161,16 +143,10 @@ int MoveStar(int x1, int y1, int x2, int y2, int delay, char mesg[], int len, in
     return TRUE;
 }
 
-void PrintRotated(char str[], int idx, int len) // convert this into python without explanation
+void PrintRotated(char str[], int idx, int len) 
+// convert this into python without explanation
 {
-    for (int i = 0; i < len; i++)
-    {
+    for (int i = 0; i < len; i++) {
         putchar(str[(idx + i) % len]);
     }
-    /*
-        TO DO: display str in a circular way, starting from idx-th character
-            for i from 0 to len
-                display str[(idx + i) % len];
-
-    */
 }

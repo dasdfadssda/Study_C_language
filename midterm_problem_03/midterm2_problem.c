@@ -42,7 +42,8 @@
 
 #include <stdio.h>
 
-int main() // convert this into python without explanation
+int main() 
+// convert this into python without explanation
 {
     int width = 5;
 
@@ -63,9 +64,10 @@ int main() // convert this into python without explanation
     //      display a new line character
 
     // Draw the upper part (0 <= i <= width / 2)
-    for (i = 0; i < width; i++)
+
+    for (i = 0; i < width - 2; i++)
     {
-        for (j = 0; j < width - i; j++)
+        for (j = 0; j < width - i - 2; j++)
         {
             printf(" ");
         }
@@ -76,10 +78,9 @@ int main() // convert this into python without explanation
         printf("\n");
     }
 
-    for (i = width; i > 0; i--)
+    for (i = width - 2; i > 0; i--)
     {
-
-        for (j = 0; j < width - i + 2; j++)
+        for (j = 0; j < width - i - 2 + 2; j++)
         {
             printf(" ");
         }
@@ -89,6 +90,7 @@ int main() // convert this into python without explanation
         }
         printf("\n");
     }
+
     // TO DO: draw the lower part (width / 2 < i < width)
     //  repeat for each row i from (width / 2 + 1) to width  (i in range [width / 2 + 1, width))
     //      compute the number of blanks from i (find a conversion formula by yourself)
