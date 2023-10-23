@@ -37,8 +37,8 @@
 
 int main() // convert this into python without explanation
 {
-    // TO DO: initialize the random seed using the current time
     srand(time(NULL));
+    
     char text[128] = "";
     char ft[128];
 
@@ -50,18 +50,13 @@ int main() // convert this into python without explanation
 
     int len = strlen(text); // get the length of the input text
 
-    for (int i = 0; i < 10; i++)
-    {
-        for (int j = 0; j < len; j++)
-        {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < len; j++) {
             int random_number = rand() % 2;
 
-            if (random_number == 0)
-            {
+            if (random_number == 1) {
                 printf(".");
-            }
-            else
-            {
+            } else {
                 printf("%c", text[j]);
             }
         }
@@ -70,3 +65,4 @@ int main() // convert this into python without explanation
 
     return 0;
 }
+//  I love you! God loves you!
