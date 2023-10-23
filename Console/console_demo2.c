@@ -1,15 +1,15 @@
 /*
-    Compilation on Windows
+    Windows에서 컴파일
         gcc console_demo2.c Console.c -D_WINDOWS
 
-    Compilation on Mac
+    Mac에서 컴파일
         gcc console_demo2.c Console.c -D_MAC
 
 */
 
-#include <stdio.h>                      // includes a file in the system directory
+#include <stdio.h>            // 시스템 디렉토리의 파일을 포함
 
-#include "Console.h"                    // includes a file in the current directory
+#include "Console.h"          // 현재 디렉토리의 파일을 포함
 
 int screen_width = 0;
 int screen_height = 0;
@@ -19,42 +19,17 @@ void MoveLeft(int x1, int x2, int y);
 
 int main()
 {
-    // get the size of the screen
+    // 화면 크기 가져오기
     screen_width = getWindowWidth();
-    screen_height = getWindowHeight() - 3;      // -3 is to prevent vertical scroll
+    screen_height = getWindowHeight() - 3; // 수직 스크롤 방지를 위해 -3 설정
 
-    clrscr();                   // clear screen
-    
+    clrscr(); // 화면 지우기
+
     MoveRight(1, screen_width, screen_height / 2);
-        MoveLeft(1, screen_width, screen_height / 2);
+    MoveLeft(1, screen_width, screen_height / 2);
 
-
-/*
-    int x = 0;
-    int y = screen_height / 2;          // set y to the vertical center
-    int prevx = 1;
-
-    for(x = screen_width; x >= 1; x--){
-        // erarse previous coordinate
-        gotoxy(prevx, y);
-        putchar(' ');
-
-        // draw a new '*' at the new coordinate
-        gotoxy(x, y);
-        putchar('*');
-
-        // save the previous coordinate
-        prevx = x;
-        gotoxy(1, screen_height);   // place the cursor at the lower-left corner to prevent blicking
-
-        fflush(stdout);             // flush contents to display on the screen
-
-        // wait for 50 msec.
-        MySleep(25);
-    }
-*/
-    gotoxy(1, screen_height);       // move the cursor to lower left coordinate
-//    MyPause();                    // wait for the user to type Enter key.
+    gotoxy(1, screen_height); // 커서를 왼쪽 아래 모서리로 이동
+    // MyPause(); // 사용자가 Enter 키를 누를 때까지 대기.
 
     return 0;
 }
@@ -64,48 +39,49 @@ void MoveRight(int x1, int x2, int y)
     int x = 0;
     int prevx = x1;
 
-    for(x = x1; x <= x2; x++){
-        // erarse previous coordinate
+    for (x = x1; x <= x2; x++)
+    {
+        // 이전 좌표 지우기
         gotoxy(prevx, y);
         putchar(' ');
 
-        // draw a new '*' at the new coordinate
+        // 새로운 좌표에 '*' 그리기
         gotoxy(x, y);
         putchar('*');
 
-        // save the previous coordinate
+        // 이전 좌표 저장
         prevx = x;
-        gotoxy(1, screen_height);   // place the cursor at the lower-left corner to prevent blicking
+        gotoxy(1, screen_height); // 화면 깜박임 방지를 위해 커서를 좌하단으로 이동
 
-        fflush(stdout);             // flush contents to display on the screen
+        fflush(stdout); // 화면에 내용 표시
 
-        // wait for 50 msec.
+        // 50밀리초 대기
         MySleep(25);
     }
 }
-
 
 void MoveLeft(int x1, int x2, int y)
 {
     int x = 0;
     int prevx = x1;
 
-    for(x = x2; x <= x1; x--){
-        // erarse previous coordinate
+    for (x = x2; x >= x1; x--)
+    {
+        // 이전 좌표 지우기
         gotoxy(prevx, y);
         putchar(' ');
 
-        // draw a new '*' at the new coordinate
+        // 새로운 좌표에 '*' 그리기
         gotoxy(x, y);
         putchar('*');
 
-        // save the previous coordinate
+        // 이전 좌표 저장
         prevx = x;
-        gotoxy(1, screen_height);   // place the cursor at the lower-left corner to prevent blicking
+        gotoxy(1, screen_height); // 화면 깜박임 방지를 위해 커서를 좌하단으로 이동
 
-        fflush(stdout);             // flush contents to display on the screen
+        fflush(stdout); // 화면에 내용 표시
 
-        // wait for 50 msec.
+        // 50밀리초 대기
         MySleep(25);
     }
 }

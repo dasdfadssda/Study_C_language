@@ -10,26 +10,26 @@ int main()
 {
     int x = 0;
 
-     // Get Value
-    printf("Input an integer: ");
+    // 값 입력
+    printf("정수를 입력하세요: ");
     scanf("%d", &x);
 
     int no_digit = CountDigit(x);
-    printf("%d has %d digits.\n", x, no_digit);
+    printf("%d는 %d자리 수입니다.\n", x, no_digit);
 
-    printf("Rotating Left:\n");
+    printf("왼쪽으로 회전:\n");
     int i = 0;
     for (i = 1; i <= no_digit; i++)
     {
         x = RotateDigit(x, no_digit, LEFT);
-        printf("after %d left-rotations: %d\n", i, x);
+        printf("%d번 왼쪽 회전 후: %d\n", i, x);
     }
 
-    printf("Rotating Right:\n");
+    printf("오른쪽으로 회전:\n");
     for (i = 1; i <= no_digit; i++)
     {
         x = RotateDigit(x, no_digit, RIGHT);
-        printf("after %d right-rotations: %d\n", i, x);
+        printf("%d번 오른쪽 회전 후: %d\n", i, x);
     }
 
     return 0;
@@ -40,7 +40,7 @@ int CountDigit(int x)
     int n = 0;
     if (x < 0)
     {
-        x = -x; // Make it positive
+        x = -x; // 양수로 변환
     }
     do
     {
@@ -59,15 +59,15 @@ int RotateDigit(int x, int no_digit, int dir)
     }
 
     if (dir == LEFT)
-    { // Left rotation code
-        int msd = x / power;
-        int rest = x % power;
+    { // 왼쪽 회전 코드
+        int msd = x / power; // 가장 왼쪽 자릿수 (Most Significant Digit)
+        int rest = x % power; // 나머지 자릿수
         x = rest * 10 + msd;
     }
     else if (dir == RIGHT)
-    { // Right rotation code
-        int lsd = x % 10;
-        int rest = x / 10;
+    { // 오른쪽 회전 코드
+        int lsd = x % 10; // 가장 오른쪽 자릿수 (Least Significant Digit)
+        int rest = x / 10; // 나머지 자릿수
         x = lsd * power + rest;
     }
 
