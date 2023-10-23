@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int height = 8; // 넓이
+    int height = 3; // 넓이
 
     for (int i = 0; i < height; i++) {
         // 공백 출력

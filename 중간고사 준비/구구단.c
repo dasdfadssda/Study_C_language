@@ -11,7 +11,7 @@
 //         printf("2에서 9 사이의 숫자를 입력하세요.\n");
 //     } else {
 //         printf("%d단을 출력합니다:\n", num);
-//         for (int i = 1; i <= 9; i++) {
+//         for (int i = 1; i <= 9; i++) { // for문용
 //             printf("%d x %d = %d\n", num, i, num * i);
 //         }
 //     }
