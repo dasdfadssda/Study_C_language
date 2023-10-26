@@ -15,9 +15,10 @@ int main()
 
     // write data into file
     for (int i = 0; i <= 10; i++)
+    {
         fprintf(fp, "%d", rand() % 100); // 파일에 입력.
-    fprintf(fp, "\n");
-
+        fprintf(fp, "\n");
+    }
     // close a file
     fclose(fp);
     return 0;
