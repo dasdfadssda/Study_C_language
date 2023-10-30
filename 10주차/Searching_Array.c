@@ -3,7 +3,8 @@
 #define SIZE 10
 
 int main(){
-    int a[SIZE] = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 };
+    
+     int a[SIZE] = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 };
 
     int target = 9;
     int i = 0;
