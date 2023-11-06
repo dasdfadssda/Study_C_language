@@ -1,5 +1,35 @@
+// a + i와 &a[i]는 동일한 메모리 위치(배열의 i번째 요소의 주소)를 가리키며, *(a + i), *&a[i], a[i]는 배열의 i번째 요소의 값을 나타내고 있다.
+
 for an array a and an integer i,
     a + i == &a[i]
     *(a + i) == *&a[i] == a[i] 
 
-    // a + i와 &a[i]는 동일한 메모리 위치(배열의 i번째 요소의 주소)를 가리키며, *(a + i), *&a[i], a[i]는 배열의 i번째 요소의 값을 나타내고 있다.
+
+
+//  String 다루기
+
+char str1[100] = "Hello.";
+char str2[100] = "Nice to see you!";
+
+
+* comparison
+- Comparing the addresses of the two strings
+if(str1 == str2)   // grammartically correct, but different from our intution
+    ...
+else
+    ...
+
+- Comparing the contents of the two strings
+if(strcmp(str1, str2) == 0)
+    ...
+else
+    ... 
+
+* Assignment
+    char str3[100] = "";
+    str3 = "Good morning!";     // incorrect (assigning something in an address constant)
+    strcpy(str3, "Good morning!");  // correct
+
+* Concatenation
+    str1 = str1 + str2;         // incorrect
+    strcat(str1, str2);         // correct
