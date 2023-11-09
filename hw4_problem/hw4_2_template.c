@@ -74,7 +74,28 @@ int GetCharacterType(int c)
     int type = OTHER;
 
     // TO DO: return the type of c (reuse your solution to hw4_1)
+        if (isspace(c))
+    {
+        return WHITESPACE;
+    }
+    else if (isalpha(c))
+    {
+        return ALPHABET;
+    }
+    else if (isdigit(c))
+    {
+        return DIGIT;
+    }
+    else if (ispunct(c))
+    {
+        return SYMBOL;
+    }
+    else
+    {
+        return OTHER;
+    }
 
+    return type;
 
 
     
