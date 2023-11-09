@@ -48,6 +48,13 @@ int main()
     {
         int prevx = x, prevy = y;
         int dx = 0, dy = 0; // horizontal and vertical distance to the new target coordinate
+        do
+        {
+            double direction = ((double)rand() / RAND_MAX) * 360.0;
+            double radian = direction / 180.0 * PI;
+            dx = (int)(cos(radian) * dist * 2 + 0.5);
+            dy = (int)(sin(radian) * dist + 0.5);
+        } while (!IsPointInRect(x + dx, y + dy, 1, 1, screen_width, screen_height));
 
         // TO DO: randomly select dx and dy such the length of (dx, dy) is the same as dist.
         //     repeat until the new point is in the rectangle (1, 1, screen_width, screen_height)
@@ -59,13 +66,19 @@ int main()
         //          (then, the new target coordinate is (x + dx, y + dy))
 
         // TO DO: update x and y using dx and dy
+        x += dx;
+        y += dy;
 
         // TO DO: display the next target by '+'
         //      move the cursor to the new target coordinate
+        gotoxy(x, y);
         //      print '+'
+        putchar('+');
         //      call "fflush(stdout);"
+        fflush(stdout);
 
         // TO DO: move a star from previous coordinate to the new target coordinate
+        MoveStar(prevx, prevy, x, y, delay);
 
     } while (!kbhit() || getch() != 27); // if type user types ESC, terminate the loop
 
@@ -123,5 +136,6 @@ void MoveStar(int x1, int y1, int x2, int y2, int delay)
 int IsPointInRect(int x, int y, int left, int top, int right, int bottom)
 {
     // TO DO: if x is in range [left, rigth] and y is in range [top, bottom], return TRUE
-    //        otherwise, return FALSE
+        //        otherwise, return FALSE
+        return (x >= left && x <= right && y >= top && y <= bottom) ? TRUE : FALSE;
 }
