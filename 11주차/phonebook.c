@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define MAX_LEN 128
 #define MAX_ROW 100
@@ -43,6 +44,35 @@ int main()
     for(int i = 0; i < no_student; i++){
     //     for each i, display studentID, first name, last name, and phone
         printf("%d) %s %s %s %s\n", i, studentID[i], first_name[i], last_name[i], phone[i]);
+    }
+
+    // repeat until the user types "quit"
+    while(1){
+        char first[MAX_LEN] = "";
+    //  read a name
+        printf("Input the first name: ");
+        scanf("%s", first);
+
+        if(strcmp(first, "quit") == 0)
+            break;
+
+        int idx = 0;
+    //  search for the student (find the index of the student)
+        int i = 0;
+        for(i = 0; i < no_student; i++){
+            if(strcmp(first, first_name[i]) == 0){
+                idx = i;
+                break;
+            }
+        }
+        if(i == no_student)
+            idx = -1;        
+
+    //  display the phone number of the student
+        if(idx >= 0)
+            printf("phone number = [%s]\n", phone[idx]);
+        else
+            printf("Failed to find %s!\n", first);
     }
 
     return 0;
