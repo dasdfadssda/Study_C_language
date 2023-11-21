@@ -131,24 +131,20 @@ void DisplayBuffer(char buffer[][MAX_COLUMN], int width, int height)
     }
 }
 
-void RandomizeBuffer(char buffer[][MAX_COLUMN], int width, int height)
-{
+void RandomizeBuffer(char buffer[][MAX_COLUMN], int width, int height) {
     // TO DO: fill buffer with random alphanumeric characters
     //      reuse your solution to hw5_2
-    for (int i = 1; i <= height; i++)
-    {
-        for (int j = 1; j <= width; j++)
+    for (int i = 1; i < height + 1; i++) {
+        for (int j = 1; j < width + 1; j++)
             buffer[i][j] = GetRandomChar();
     }
 }
 
-void FillRectangle(char buffer[][MAX_COLUMN], int left, int top, int right, int bottom, char c)
-{
+void FillRectangle(char buffer[][MAX_COLUMN], int left, int top, int right, int bottom, char c) {
     // TO DO: fill the rectangle (left, top, right, bottom) in buffer with character c
     //      reuse your solution to hw5_2
-    for (int i = top; i <= bottom; i++)
-    {
-        for (int j = left; j <= right; j++)
+    for (int i = top; i < bottom + 1; i++) {
+        for (int j = left; j < right + 1; j++)
             buffer[i][j] = c;
     }
 }
@@ -158,29 +154,24 @@ char random_char[128]; // buffer to store random characters
 int no_random = 0;     // # of character in the buffer
 int cur_idx = 0;       // the index of the next random character
 
-char GetRandomChar()
-{
+char GetRandomChar() {
     // TO DO: provide a random alphanumeric character minimizing duplication
     //      reuse your solution to hw5_2
-    if (cur_idx == no_random)
-    {
-        if (no_random == 0)
-        {
+    if (cur_idx == no_random) {
+        if (no_random == 0) {
             FillAlphaNum(random_char, &no_random);
             Shuffle(random_char, no_random);
         }
         cur_idx = 0;
     }
-
     return random_char[cur_idx++];
 }
 
-void FillAlphaNum(char array[], int *no_char)
-{
+void FillAlphaNum(char array[], int *no_char) {
     // TO DO: fill array with digits ('0' ~ '9'), uppercase characters ('A' ~ 'Z'), and lower case characters ('a' ~ 'z')
     //      reuse your solution to hw5_1
-    int index = 0;
 
+    int index = 0;
     for (char c = '0'; c <= '9'; ++c)
     {
         array[index++] = c;
@@ -195,19 +186,15 @@ void FillAlphaNum(char array[], int *no_char)
     {
         array[index++] = c;
     }
-
     *no_char = index;
 }
 
-void Shuffle(char array[], int size)
-{
+void Shuffle(char array[], int size) {
     // TO DO: shuffle all elements of array
     //      reuse your solution to hw5_1
+    for (int i = 0; i < size; ++i) {
 
-    for (int i = 0; i < size; ++i)
-    {
         int j = rand() % size;
-
         char temp = array[i];
         array[i] = array[j];
         array[j] = temp;

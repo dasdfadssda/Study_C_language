@@ -56,24 +56,20 @@ void DisplayBuffer(char buffer[][MAX_COLUMN], int width, int height)
     }
 }
 
-void RandomizeBuffer(char buffer[][MAX_COLUMN], int width, int height)
-{
+void RandomizeBuffer(char buffer[][MAX_COLUMN], int width, int height) {
     // TO DO: fill buffer with random alphanumeric characters
     //      for i in [1, height] and j in [1, width], fill buffer[i][j] with a random alphanumeric character using GetRandomChar()
-    for (int i = 1; i <= height; i++)
-    {
-        for (int j = 1; j <= width; j++)
+    for (int i = 1; i < height + 1; i++) {
+        for (int j = 1; j < width + 1; j++)
             buffer[i][j] = GetRandomChar();
     }
 }
 
-void FillRectangle(char buffer[][MAX_COLUMN], int left, int top, int right, int bottom, char c)
-{
+void FillRectangle(char buffer[][MAX_COLUMN], int left, int top, int right, int bottom, char c) {
     // TO DO: fill the rectangle (left, top, right, bottom) in buffer with character c
     //      for i in [top, bottom] and j in [left, right], set buffer[i][j] to c
-    for (int i = top; i <= bottom; i++)
-    {
-        for (int j = left; j <= right; j++)
+    for (int i = top; i < bottom + 1; i++) {
+        for (int j = left; j < right + 1; j++)
             buffer[i][j] = c;
     }
 }
@@ -83,19 +79,16 @@ char random_char[128]; // buffer to store random characters
 int no_random = 0;     // # of character in the buffer
 int cur_idx = 0;       // the index of the next random character
 
-char GetRandomChar()
-{
+char GetRandomChar() {
     // TO DO: provide a random alphanumeric character minimizing duplication
     //      if cur_idx is the same as no_random
-
-    if (cur_idx == no_random)
-    {
-        //          if no_random is zero, fill random_char with alphanumeric characters using the FillAlphaNum() of hw5_1
-
-        if (no_random == 0)
-        {
-            //          shuffle random_char using the Shuffle() function of hw5_1
-            //      return random_char[cur_idx], increasing cur_idx (use the postfix increment operator)
+    if (cur_idx == no_random) {
+        // if no_random is zero, fill random_char with alphanumeric characters using the FillAlphaNum() of hw5_1
+        // shuffle random_char using the Shuffle() function of hw5_1
+        // return random_char[cur_idx], increasing cur_idx (use the postfix increment operator)
+        // shuffle random_char using the Shuffle() function of hw5_1
+        // return random_char[cur_idx], increasing cur_idx (use the postfix increment operator)
+        if (no_random == 0) {
             FillAlphaNum(random_char, &no_random);
             Shuffle(random_char, no_random);
         }
@@ -105,38 +98,30 @@ char GetRandomChar()
     return random_char[cur_idx++];
 }
 
-void FillAlphaNum(char array[], int *no_char)
-{
+void FillAlphaNum(char array[], int *no_char) {
     // TO DO: fill array with digits ('0' ~ '9'), uppercase characters ('A' ~ 'Z'), and lower case characters ('a' ~ 'z')
     //      reuse your solution to hw5_1
     int index = 0;
 
-    for (char c = '0'; c <= '9'; ++c)
-    {
+    for (char c = '0'; c <= '9'; ++c) {
         array[index++] = c;
     }
-
-    for (char c = 'A'; c <= 'Z'; ++c)
-    {
+    for (char c = 'A'; c <= 'Z'; ++c) {
         array[index++] = c;
     }
-
-    for (char c = 'a'; c <= 'z'; ++c)
-    {
+    for (char c = 'a'; c <= 'z'; ++c) {
         array[index++] = c;
     }
-
     *no_char = index;
 }
 
-void Shuffle(char array[], int size)
-{
+void Shuffle(char array[], int size) {
+
     // TO DO: shuffle all elements of array
     //      reuse your solution to hw5_1
-    for (int i = 0; i < size; ++i)
-    {
-        int j = rand() % size;
+    for (int i = 0; i < size; ++i) {
 
+        int j = rand() % size;
         char temp = array[i];
         array[i] = array[j];
         array[j] = temp;
