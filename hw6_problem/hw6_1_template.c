@@ -74,6 +74,7 @@ int main(int argc, char *argv[])
             AddWord(new_word);
         }
 
+        //  if c is not space, append c at the end of new_word and increase j
         if (!isspace(c))
         {
             new_word[j] = (char)c;
@@ -82,7 +83,7 @@ int main(int argc, char *argv[])
 
         prev = c;
     }
-    //  if c is not space, append c at the end of new_word and increase j
+    
     if (j != 0)
     {
         new_word[j] = '\0';
@@ -110,7 +111,7 @@ no_word = 0;
 capacity = 0;
 
 return 0;
-}
+
 
 int CountWords(char filename[])
 {
@@ -160,6 +161,7 @@ void AddWord(char new_word[])
     //      otherwise,
     //          copy new_word to lexicon[no_word]
     //          increase no_word
+
     if (no_word >= capacity)
     {
         printf("Warning: The lexicon is full\n");
