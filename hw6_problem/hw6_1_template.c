@@ -89,7 +89,6 @@ int main(int argc, char *argv[])
         new_word[j] = '\0';
         AddWord(new_word);
     }
-    fclose(fp);
 
     // TO DO: add the last word to the lexicon, if necessary
     //  if j is not zero
@@ -97,6 +96,7 @@ int main(int argc, char *argv[])
     //      add new_word to the lexicon by calling AddWord()
 
     // TO DO: close the file
+    fclose(fp);
 
     DisplayLexicon();
 
@@ -160,7 +160,6 @@ void AddWord(char new_word[])
     //      otherwise,
     //          copy new_word to lexicon[no_word]
     //          increase no_word
-
     if (no_word >= capacity)
     {
         printf("The lexicon is full!\n");
