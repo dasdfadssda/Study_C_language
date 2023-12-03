@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
     if (fp == NULL)
     {
         printf("Failed to open the file\n");
+        free(lexicon);
         return -1;
     }
 
@@ -74,21 +75,19 @@ int main(int argc, char *argv[])
         //      add new_word to the lexicon by calling AddWord3()
 
         // if c is not space, append c at the end of new_word and increase j
-        if (prev == ' ' && c != ' ')
+        if (isspace(prev) && !isspace(c))
         {
             j = 0;
         }
-        else if (prev != ' ' && c == ' ')
+        else if (!isspace(prev) && isspace(c))
         {
             new_word[j] = '\0';
             AddWord3(new_word);
         }
-
-        if (c != ' ')
+        if (!isspace(c))
         {
             new_word[j++] = c;
         }
-
         prev = c;
     }
 
@@ -101,8 +100,8 @@ int main(int argc, char *argv[])
         new_word[j] = '\0';
         AddWord3(new_word);
     }
-    // TO DO: close the file
 
+    // TO DO: close the file
     fclose(fp);
 
     //    DisplayLexicon();         // if necessary, enable this line during debugging
@@ -126,27 +125,24 @@ int main(int argc, char *argv[])
 int CountWords(char filename[])
 {
     // reuse your solution to hw6_1
-    FILE *fp = fopen(filename, "r");
-    if (fp == NULL)
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
     {
-        printf("Failed to open the file\n");
+        printf("Unable to open the file\n");
         return -1;
     }
 
-    int c, prev = ' ';
     int count = 0;
-
-    while ((c = fgetc(fp)) != EOF)
+    char c;
+    while ((c = fgetc(file)) != EOF)
     {
-        if (c != ' ' && (prev == ' ' || prev == '\n'))
+        if (c == ' ' || c == '\n')
         {
             count++;
         }
-        prev = c;
     }
 
-    fclose(fp);
-
+    fclose(file);
     return count;
 }
 
@@ -165,11 +161,11 @@ void AddWord3(char new_word[])
     //          copy new_word to lexicon[no_word].word
     //          set lexicon[indx].count to one
     //          increase no_word
-    int indx = FindWord3(new_word);
+    int index = FindWord3(new_word);
 
-    if (indx != -1)
+    if (index != -1)
     {
-        lexicon[indx].count++;
+        lexicon[index].count++;
     }
     else
     {
@@ -212,6 +208,7 @@ void SortLexiconByCount()
 {
     // TO DO: sort lexicon BY COUNT in DESCENDING ORDER
     //     adapt the algorithm SelectionSort() in chap. 8 slide to sort an array of 'struct String'
+
     for (int i = 0; i < no_word - 1; i++)
     {
         int max_indx = i;
@@ -223,6 +220,8 @@ void SortLexiconByCount()
             }
         }
 
-        struct String temp;
+        struct String temp = lexicon[i];
+        lexicon[i] = lexicon[max_indx];
+        lexicon[max_indx] = temp;
     }
 }
