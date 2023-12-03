@@ -44,10 +44,10 @@ int main(int argc, char *argv[])
     FILE *fp = fopen(filename, "r");
     if (fp == NULL)
     {
-        printf("File open failed");
+        printf("File open failed\n");
         return -1;
     }
-
+s
     int c = 0;
     int prev = ' ';
     char new_word[MAX_LEN] = "";

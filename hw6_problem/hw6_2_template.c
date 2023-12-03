@@ -174,7 +174,7 @@ void AddWord2(char new_word[])
     {
         if (no_word >= capacity)
         {
-            printf("Warning: The lexicon is full\n");
+            printf("The lexicon is full!\n");
             getchar();
         }
         else
