@@ -83,35 +83,34 @@ int main(int argc, char *argv[])
 
         prev = c;
     }
-    
+
     if (j != 0)
     {
         new_word[j] = '\0';
         AddWord(new_word);
     }
     fclose(fp);
+
+    // TO DO: add the last word to the lexicon, if necessary
+    //  if j is not zero
+    //      add zero at the end of new_word to make a zero-terminated string
+    //      add new_word to the lexicon by calling AddWord()
+
+    // TO DO: close the file
+
+    DisplayLexicon();
+
+    // TO DO: delete lexcion
+    //      deallocate lexicon
+    //      reset lexicon to NULL for safety
+    //      reset no_word and capacity to zero
+    free(lexicon);
+    lexicon = NULL;
+    no_word = 0;
+    capacity = 0;
+
+    return 0;
 }
-
-// TO DO: add the last word to the lexicon, if necessary
-//  if j is not zero
-//      add zero at the end of new_word to make a zero-terminated string
-//      add new_word to the lexicon by calling AddWord()
-
-// TO DO: close the file
-
-DisplayLexicon();
-
-// TO DO: delete lexcion
-//      deallocate lexicon
-//      reset lexicon to NULL for safety
-//      reset no_word and capacity to zero
-free(lexicon);
-lexicon = NULL;
-no_word = 0;
-capacity = 0;
-
-return 0;
-
 
 int CountWords(char filename[])
 {
@@ -164,7 +163,7 @@ void AddWord(char new_word[])
 
     if (no_word >= capacity)
     {
-        printf("Warning: The lexicon is full\n");
+        printf("The lexicon is full!\n");
         getchar();
     }
     else
