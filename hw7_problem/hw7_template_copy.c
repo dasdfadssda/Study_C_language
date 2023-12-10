@@ -71,7 +71,7 @@ int main()
     int cont = TRUE;
     while(cont){
         // create a character buffer with a text randomly chosen from message
-
+        
 
         // repeat for i from 0 to cb.len
         for(int i = 0; i < cb.len; i++){
@@ -171,7 +171,7 @@ void CreateCharBuffer(CharBuffer *cb, char text[], int width, int height)
         // set p->vlen to the absolute distance between p->sy and p->ey
     }
 
-    // set p->index[i] to i for all i in range [0, p->len)
+    // set cb->index[i] to i for all i in range [0, cb->len)
     
 
 
