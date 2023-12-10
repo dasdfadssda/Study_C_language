@@ -7,8 +7,7 @@ int main() {
 
     // 배열의 원소를 포인터를 이용해 출력합니다.
     for (int i = 0; i < 3; i++) {
-        printf("배열의 %d번째 원소: %d
-", i, *(ptr + i));
+        printf("배열의 %d번째 원소: %d", i, *(ptr + i));
     }
 
     return 0;
@@ -23,8 +22,7 @@ int main() {
 
     // 포인터 산술을 이용해 배열의 원소에 접근합니다.
     for (int i = 0; i < 3; i++) {
-        printf("배열의 %d번째 원소: %d
-", i, *(ptr++));
+        printf("배열의 %d번째 원소: %d", i, *(ptr++));
     }
 
     return 0;
@@ -56,8 +54,7 @@ int main() {
 
     // 할당된 메모리의 값을 출력합니다.
     for (int i = 0; i < 3; i++) {
-        printf("메모리의 %d번째 원소: %d
-", i, ptr[i]);
+        printf("메모리의 %d번째 원소: %d", i, ptr[i]);
     }
 
     // 동적으로 할당한 메모리는 사용이 끝나면 반드시 해제해야 합니다. 
