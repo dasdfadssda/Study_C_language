@@ -42,8 +42,7 @@ int main() {
     // 메모리 할당이 실패하면 malloc 함수는 NULL을 반환합니다. 
     // 따라서 ptr이 NULL인지 확인하여 메모리 할당이 제대로 되었는지 검사합니다.
     if (ptr == NULL) {
-        printf("메모리 할당 실패!
-");
+        printf("메모리 할당 실패!");
         return -1;
     }
 
