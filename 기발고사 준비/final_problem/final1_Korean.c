@@ -1,12 +1,12 @@
 /*
-    This program reads a text from the user and rotates the text around the screen until the user types ESC.
-    Whenever the user presses space, it changes the direction.
-    Complete the program by implementing RepeatText() and RotateRight().
+    이 프로그램은 사용자로부터 텍스트를 입력받아 화면 주위를 텍스트가 회전하도록 표시합니다. 
+    사용자가 ESC 키를 입력하면 프로그램이 종료됩니다. 
+    사용자가 스페이스바를 누르면 회전 방향이 변경됩니다.
+    RepeatText() 및 RotateRight() 함수를 구현하여 프로그램을 완성하세요.
 
-    Compilation
-    - On Windows: gcc final1_21800712.c Console.c -D_WINDOWS -Wall
-    - On Mac: gcc final1.c Console.c -D_MAC -Wall
-
+    컴파일
+    - Windows에서: gcc final1_21800712.c Console.c -D_WINDOWS -Wall
+    - Mac에서: gcc final1.c Console.c -D_MAC -Wall
 */
 
 #include <stdio.h>
@@ -26,8 +26,8 @@ int main()
 {
     {
         /*
-            Test code for RepeatText() and RotateRight().
-            The output should be as follows:
+            RepeatText() 및 RotateRight()의 테스트 코드입니다.
+            결과는 다음과 같아야 합니다:
 
                 str = [Hello, World!]
                 after RepeatText(), str = [Hello, World! Hello, World! Hello, World! Hello, W]
@@ -65,10 +65,10 @@ int main()
 
     clrscr();
 
-    printf("screen size = %d x %d\n", screen_width, screen_height);
+    printf("화면 크기 = %d x %d\n", screen_width, screen_height);
 
     char text[512] = "";
-    printf("Input text: ");
+    printf("텍스트를 입력하세요: ");
     fgets(text, 512, stdin);
     int len = strlen(text) - 1;
     text[len] = 0;
@@ -79,15 +79,15 @@ int main()
     int bottom = screen_height;
 
     clrscr();
-    //    EnableCursor(FALSE);      // this line hides the cursor from the screen.
-    // enable it only after submitting all solutions
+    //    EnableCursor(FALSE);      // 이 라인은 화면에서 커서를 숨깁니다.
+    // 모든 솔루션을 제출한 후에 활성화하세요.
     int rect_perimeter = (right - left + 1) * 2 + (bottom - top + 1) * 2 - 4;
     if (len < rect_perimeter)
         RepeatText(text, rect_perimeter);
     else if (len > rect_perimeter)
         TrimText(text, rect_perimeter);
 
-    char guide[] = "Press space to change direction and ESC to quit!";
+    char guide[] = "스페이스바를 눌러 방향을 변경하고 ESC를 눌러 종료하세요!";
     gotoxy((screen_width - strlen(guide)) / 2, screen_height / 2);
     printf("%s", guide);
 
@@ -98,15 +98,15 @@ int main()
         if (kbhit())
         {
             key = getch();
-            if (key == ' ') // change direction on space
+            if (key == ' ') // 스페이스바를 누르면 방향 변경
                 dir = 1 - dir;
-            else if (key == ESC) // finish animation on ESC
+            else if (key == ESC) // ESC를 누르면 애니메이션 종료
                 break;
         }
 
         DrawTextRect(text, left, top, right, bottom);
 
-        // Rotate according to the value of dir
+        // dir 값에 따라 회전
         if (dir == 0)
             RotateRight(text);
         else
@@ -118,9 +118,9 @@ int main()
     }
 
     gotoxy(1, screen_height);
-    printf("Bye!\n");
+    printf("종료합니다!\n");
 
-    //    EnableCursor(TRUE);       // enable this line only after submitting all solutions
+    //    EnableCursor(TRUE);       // 모든 솔루션을 제출한 후에 활성화하세요
 
     return 0;
 }
@@ -130,28 +130,28 @@ void DrawTextRect(char *text, int left, int top, int right, int bottom)
     int x = 0, y = 0;
     int t = 0;
 
-    // draw the top side
+    // 위쪽 테두리 그리기
     for (x = left; text[t] != 0 && x <= right; x++)
     {
         gotoxy(x, top);
         putchar(text[t++]);
     }
 
-    // draw the right side
+    // 오른쪽 테두리 그리기
     for (y = top + 1; text[t] != 0 && y <= bottom; y++)
     {
         gotoxy(right, y);
         putchar(text[t++]);
     }
 
-    // draw the bottom side
+    // 아래쪽 테두리 그리기
     for (x = right - 1; text[t] != 0 && x >= left; x--)
     {
         gotoxy(x, bottom);
         putchar(text[t++]);
     }
 
-    // draw the left side
+    // 왼쪽 테두리 그리기
     for (y = bottom - 1; y > top; y--)
     {
         gotoxy(left, y);
@@ -160,16 +160,14 @@ void DrawTextRect(char *text, int left, int top, int right, int bottom)
 }
 
 void RepeatText(char *text, int target_len)
-// extend the string by repeating the input string
-// insert a space character after each iteration
-// e.g., if text == "Hello, World!", RepeatText(text, 50) makes text "Hello, World! Hello, World! Hello, World! Hello, W".
+// 입력된 문자열을 반복하여 확장하고 각 반복 사이에 공백 문자를 삽입합니다.
+// 예를 들어, text == "Hello, World!"라면 RepeatText(text, 50)는 "Hello, World! Hello, World! Hello, World! Hello, W"로 만듭니다.
 {
-    // TO DO: implement this function
-    //     if the length of text is smaller than target_len,
-    //        add a space character (' ') at the end of text
-    //        extend text to length target_len (set text[i] to text[i % len] for len <= i < target_len,
-    //           where 'len' is the orignal length of the input text + 1, +1 is for the space.)
-    char *pname;
+    // TO DO: 이 함수를 구현하세요
+    //     만약 text의 길이가 target_len보다 작다면,
+    //        text의 끝에 공백 문자 (' ')를 추가하고
+    //        text를 target_len 길이까지 확장하세요 (len <= i < target_len에 대해 text[i]를 text[i % len]으로 설정,
+    //           여기서 'len'은 입력된 텍스트의 원래 길이 + 1입니다. +1은 공백 문자를 추가한 것입니다.)
     int len = strlen(text);
     if (len < target_len)
     {
@@ -194,8 +192,8 @@ void TrimText(char *text, int target_len)
 }
 
 void RotateLeft(char *text)
-// rotate a string one step left
-// e.g., "HELLO" --> "ELLOH"
+// 문자열을 한 칸 왼쪽으로 회전시킵니다.
+// 예를 들어, "HELLO" --> "ELLOH"
 {
     int len = strlen(text);
     char temp = text[0];
@@ -206,11 +204,11 @@ void RotateLeft(char *text)
 }
 
 void RotateRight(char *text)
-// rotate a string one step right
-// e.g., "HELLO" --> "OHELL"
+// 문자열을 한 칸 오른쪽으로 회전시킵니다.
+// 예를 들어, "HELLO" --> "OHELL"
 {
-    // TO DO: implement this function
-    // hint) It's behavior is the opposite of RotateLeft()
+    // TO DO: 이 함수를 구현하세요
+    // 힌트) RotateLeft()와 반대 동작을 합니다.
     int len = strlen(text);
     char temp = text[len - 1];
     for (int i = len - 2; i > 0; i--)
