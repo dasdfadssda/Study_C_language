@@ -202,11 +202,11 @@ void RotateLeft(char *text)
 // 예를 들어, "HELLO" --> "ELLOH"
 {
     int len = strlen(text);
-    char temp = text[0];
+    char num = text[0];
     for (int i = 0; i < len - 1; i++)
         text[i] = text[i + 1];
 
-    text[len - 1] = temp;
+    text[len - 1] = num;
 }
 
 void RotateRight(char *text)
