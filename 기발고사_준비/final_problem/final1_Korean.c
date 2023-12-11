@@ -1,6 +1,6 @@
 /*
-    이 프로그램은 사용자로부터 텍스트를 입력받아 화면 주위를 텍스트가 회전하도록 표시합니다. 
-    사용자가 ESC 키를 입력하면 프로그램이 종료됩니다. 
+    이 프로그램은 사용자로부터 텍스트를 입력받아 화면 주위를 텍스트가 회전하도록 표시합니다.
+    사용자가 ESC 키를 입력하면 프로그램이 종료됩니다.
     사용자가 스페이스바를 누르면 회전 방향이 변경됩니다.
     RepeatText() 및 RotateRight() 함수를 구현하여 프로그램을 완성하세요.
 
@@ -94,7 +94,6 @@ int main()
 
     gotoxy(x, y);
     printf("%s", guide);
-    
 
     int dir = 0;
     while (1)
@@ -173,19 +172,21 @@ void RepeatText(char *text, int target_len)
     //        text의 끝에 공백 문자 (' ')를 추가하고
     //        text를 target_len 길이까지 확장하세요 (len <= i < target_len에 대해 text[i]를 text[i % len]으로 설정,
     //           여기서 'len'은 입력된 텍스트의 원래 길이 + 1입니다. +1은 공백 문자를 추가한 것입니다.)
+
     int len = strlen(text);
     if (len < target_len)
     {
-        text = strcat(text, " ");
-        for (int i = len; i < target_len; i++)
+        char temp[512];     // 임시 버퍼
+        strcpy(temp, text); // text를 임시 버퍼에 복사
+        strcat(temp, " ");  // 공백 추가
+
+        while (strlen(temp) < target_len) // 길이가 target_len보다 작을 때까지 반복
         {
-            text = strcat(text, "Hello, World! ");
-            if (target_len < strlen(text) - 1)
-            {
-                text[target_len] = '\0';
-                break;
-            }
+            strcat(temp, "Hello, World! "); // 텍스트 추가
         }
+
+        strncpy(text, temp, target_len); // target_len 길이로 다시 text에 복사
+        text[target_len] = '\0';         // 문자열 종료
     }
 }
 
