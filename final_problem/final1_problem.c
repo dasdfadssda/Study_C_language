@@ -152,8 +152,8 @@ int GetCategory(int weight)
 {
     // write your code here
 
-    int category = 0;
-    
+   int category = 0;
+
     for (int i = 0; i < no_category; i++) {
         if (weight >= category_table[i]) {
             category = i;
