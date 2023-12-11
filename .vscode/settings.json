@@ -3,7 +3,9 @@
     "ratio": "c",
     "time.h": "c",
     "stdio.h": "c",
-    "array": "c"
+    "array": "c",
+    "__locale": "c",
+    "system_error": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",

@@ -153,18 +153,12 @@ int GetCategory(int weight)
     // write your code here
 
    int category = 0;
-
-    for (int i = 0; i < no_category; i++) {
-        if (weight >= category_table[i]) {
-            category = i;
-            printf("읽은 값%d",i);
-            break;
-        }
+    
+   while (category < no_category && weight >= category_table[category]) {
+        category++;
     }
     
     return category;
-
-
 }
 
 void DisplayAgeTable()
