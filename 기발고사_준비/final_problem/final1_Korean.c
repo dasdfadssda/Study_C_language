@@ -42,7 +42,7 @@ int main()
         char str[256] = "";
         strcpy(str, "Hello, World!");
         printf("str = [%s]\n", str);
-        RepeatText(str, 50);
+         printf("텍스트를 입력하세요: ");
         printf("after RepeatText(), str = [%s]\n", str);
         for (int i = 0; i < 3; i++)
         {
