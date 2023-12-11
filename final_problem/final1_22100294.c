@@ -136,7 +136,7 @@ void ReadAgeTable(char filename[])
     // read max_age 
     fscanf(fp, "max_age %d", &max_age);
     
-    //initialize age_table
+    //initialize age_table and set data
      for (int i = 1; i <= max_age; i++) {
         for (int j = 0; j < no_category; j++) {
             fscanf(fp, "%d", &age_table[i][j]);
@@ -151,11 +151,14 @@ int GetCategory(int weight)
 // TO DO: implement this function
 {
     // write your code here
-
    int category = 0;
-    
-   while (category < no_category && weight >= category_table[category]) {
-        category++;
+
+    // get category_table num
+    for (int i = 0; i < no_category; i++) {
+        if (weight >= category_table[i]) {
+            category = i;
+            break;
+        }
     }
     
     return category;
