@@ -2,7 +2,8 @@
   "files.associations": {
     "ratio": "c",
     "time.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "array": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",
