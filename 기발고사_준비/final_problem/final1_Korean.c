@@ -89,7 +89,7 @@ int main()
 
     char guide[] = "스페이스바를 눌러 방향을 변경하고 ESC를 눌러 종료하세요!";
     int guideLength = strlen(guide);
-    int x = (screen_width - guideLength) / 2;
+    int x = (screen_width - guideLength+guideLength/2) / 2;
     int y = screen_height / 2;
 
     gotoxy(x, y);
