@@ -76,12 +76,12 @@ int FindNextWord(char *str, int *start, int *end)
 // 주어진 문자열에서 특정 부분 문자열을 추출하는 함수
 void Substring(char *str, int start, int end, char *substring)
 {
-    int i = 0, j = 0;
+    int string_num = 0; // 이 부분 수정
 
-    for (i = start; i < end; i++, j++)
+    for (int i = start; i < end; i++, string_num++)
     {
-        substring[j] = str[i];
+        substring[string_num] = str[i];
     }
     // 부분 문자열의 끝에 null 문자 추가
-    substring[j] = '\0';
+    substring[string_num] = '\0';
 }

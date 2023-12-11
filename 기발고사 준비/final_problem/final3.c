@@ -113,47 +113,31 @@ int FindNextWord(char *str, int *start, int *end)
 // Hint) Reuse the solution to the previous problem.
 {
 //    printf("str = [%s], *start = %d, *end = %d\n", str, *start, *end);        // if necessary, enable this line for debugging. (disable before submission)
-
     // TO DO: Find the start index of a word.
     //        Initialize *start to *end, and increase it until *start reaches the end of string ('\0') or a non-whitespace character.
-    //        Use isspace() to decide whether a character is whitespace or not.
-     
-    // printf("str = [%s], *start = %d, *end = %d\n", str, *start, *end);        // if necessary, enable this line for debugging. (disable before submission)
-    // TO DO: Find the start index of a word.
-    //        Initialize *start to *end, and increase it until *start reaches the end of string ('\0') or a non-whitespace character.
-    //        Use isspace() to check whether a character is whitespace or not.
+    //        Use isspace() to check whether a character is whitespace or not
+        *start = *end;  // 시작 인덱스를 이전 단어의 끝으로 설정
+    while(isspace((unsigned char)str[*start]) && str[*start] != '\0') {  // 문자열의 끝이거나 공백이 아닌 문자를 찾을 때까지 시작 인덱스 증가
+        (*start)++;
+    }
     // Hint) To increase *start, you need to use parentheses, as (*start)++.
     //*end = 0;
 
     // TO DO: If there is no remaining word, report failure.
     //        (If the (*start)-th character is the null character, set *start and *end to -1 for safety and return FALSE.)
-
-    //TO DO: Find the end index of the word.
-    //       Initialize *end to *start + 1, and increase it until *end //reaches the end of string ('\0') or a whitespace character.
-
-   while (str[*start] != '\0' && isspace(str[*start])) {
-        (*start)++;
-    }
-
-    // If there is no remaining word, report failure
-    if (str[*start] == '\0') {
+        if (str[*start] == '\0') {  // 문자열의 끝에 도달하면 더 이상 단어가 없음을 나타내는 FALSE 반환
         *start = -1;
         *end = -1;
         return FALSE;
     }
-
-    // Find the end index of the word
-    *end = *start;
-    while (str[*end] != '\0' && !isspace(str[*end])) {
+    //TO DO: Find the end index of the word.
+    //       Initialize *end to *start + 1, and increase it until *end //reaches the end of string ('\0') or a whitespace character.
+    *end = *start + 1;  // 끝 인덱스를 시작 인덱스 다음으로 설정
+    while(!isspace((unsigned char)str[*end]) && str[*end] != '\0') {  // 문자열의 끝이거나 공백 문자를 찾을 때까지 끝 인덱스 증가
         (*end)++;
     }
 
-    // If the word is at the end of the string, adjust the end index
-    if (str[*end] == '\0') {
-        (*end)--;
-    }
-
-    return TRUE;
+    return TRUE;  // 단어를 찾았음을 나타내는 TRUE 반환
 }
 
 void DisplayWords(Word words[], int n)
@@ -169,7 +153,9 @@ void AddWord(char *str, int start, int end)
 // The 'words' array has a new element composed of (7, 12, "World") and 'no_word' is increased.
 {
     // TO DO: fill the start and end fields of words[no_word] using the parameters
-    if (no_word < MAX_WORD) {
+    // TO DO: build a string with str[start] ~ str[end - 1] in words[no_word].word. words[no_word].word = str[strat~end-1]
+    // TO DO: increase no_word.
+        if (no_word < MAX_WORD) {
         for (int i = start; i < end; i++) {
             words[no_word].word[i - start] = str[i];
         }
@@ -178,8 +164,7 @@ void AddWord(char *str, int start, int end)
         words[no_word].end = end;
         no_word++;
     }
-    // TO DO: build a string with str[start] ~ str[end - 1] in words[no_word].word. words[no_word].word = str[strat~end-1]
-    // TO DO: increase no_word.
+
 }
 
 void ShuffleWords(Word words[], int n)
@@ -191,10 +176,10 @@ void ShuffleWords(Word words[], int n)
     //          exchange words[i] and words[j]
 
 for (int i = 0; i < n; i++) {
-        int j = rand() % n;
+        int random_number = rand() % n;
         Word temp = words[i];
-        words[i] = words[j];
-        words[j] = temp;
+        words[i] = words[random_number];
+        words[random_number] = temp;
     }
 }
 
