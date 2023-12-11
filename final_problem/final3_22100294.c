@@ -53,11 +53,11 @@ int main()
         printf("Failed to open file contact.txt\n");
         return -1;
     }
-       while ((ch = fgetc(fp)) != EOF)
-    {                    
-        fputc(ch, stdout); 
-        count++;
-    }
+    //    while ((ch = fgetc(fp)) != EOF)
+    // {                    
+    //     fputc(ch, stdout); 
+    //     count++;
+    // }
     printf("\n읽은 값은 %d\n",count);
 
     //  read the # of data

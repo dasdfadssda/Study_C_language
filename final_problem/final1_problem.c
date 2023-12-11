@@ -116,28 +116,35 @@ void ReadAgeTable(char filename[])
 {
     // open text file
     FILE *fp;
-    fp = fopen(filename, "r"); 
-     if(fp == NULL){
-        printf("Failed to open file %s in Line %d of file %s\n",
-                FILE_NAME, __LINE__, __FILE__);
-        exit(-1);
-    }
-
-    // read the # of file
-     while(1){
-    // read file
-    int i = 0;
+    fp = fopen(filename, "r");
     
-        if(ret == EOF)
-            break;
-
-    //          increase no_student
-        i++;
+    // check error
+    if (fp == NULL) {
+       printf("Failed to open file %s in Line %d of file %s\n",
+                filename, __LINE__, __FILE__);
+        exit(1);
     }
-
-    // close the file
-     fclose(fp); 
-
+    
+    // read no_category from first line
+    fscanf(fp, "no_category %d", &no_category);
+    
+    // read category to category_table
+    for (int i = 0; i < no_category; i++) {
+        fscanf(fp, "%d", &category_table[i]);
+    }
+    
+    // read max_age 
+    fscanf(fp, "max_age %d", &max_age);
+    
+    //initialize age_table
+    for (int i = 1; i <= max_age; i++) {
+        for (int j = 0; j < no_category; j++) {
+            fscanf(fp, "%d", &age_table[i][j]);
+        }
+    }
+    
+    // close file
+    fclose(fp);
 }
 
 int GetCategory(int weight)
@@ -145,6 +152,15 @@ int GetCategory(int weight)
 {
     // write your code here
 
+    int category = 0;
+    
+    for (int i = 0; i < no_category; i++) {
+        if (weight >= category_table[i]) {
+            category = i;
+        }
+    }
+    
+    return category;
 
 
 }
