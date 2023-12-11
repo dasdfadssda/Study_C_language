@@ -213,12 +213,13 @@ void RotateRight(char *text)
 // 문자열을 한 칸 오른쪽으로 회전시킵니다.
 // 예를 들어, "HELLO" --> "OHELL"
 {
-    // TO DO: 이 함수를 구현하세요
-    // 힌트) RotateLeft()와 반대 동작을 합니다.
     int len = strlen(text);
-    char temp = text[len - 1];
-    for (int i = len - 2; i > 0; i--)
-        text[i + 1] = text[i];
+    char last_char = text[len - 1]; // 마지막 문자를 저장
 
-    text[0] = temp;
+    // 문자열의 각 문자를 오른쪽으로 이동시킴
+    for (int i = len - 1; i > 0; i--) {
+        text[i] = text[i - 1];
+    }
+
+    text[0] = last_char; // 마지막 문자를 첫 번째 위치로 이동
 }
