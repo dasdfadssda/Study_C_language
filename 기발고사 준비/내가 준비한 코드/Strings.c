@@ -37,15 +37,12 @@ int main() {
     char dest[50];
 
     strcpy(dest, src);  // strcpy 함수를 사용하여 src 문자열을 dest 문자열로 복사합니다.
-    printf("복사된 문자열: %s
-", dest);
+    printf("복사된 문자열: %s", dest);
 
     strcat(dest, ", World!");  // strcat 함수를 사용하여 dest 문자열에 ", World!"를 이어 붙입니다.
-    printf("변경된 문자열: %s
-", dest);
+    printf("변경된 문자열: %s", dest);
 
-    printf("문자열의 길이: %d
-", strlen(dest));  // strlen 함수를 사용하여 문자열의 길이를 출력합니다.
+    printf("문자열의 길이: %d", strlen(dest));  // strlen 함수를 사용하여 문자열의 길이를 출력합니다.
 
     return 0;
 }
@@ -59,8 +56,7 @@ int main() {
     int num;
 
     num = atoi(str);  // atoi 함수를 사용하여 문자열을 정수로 변환합니다.
-    printf("변환된 숫자: %d
-", num);
+    printf("변환된 숫자: %d", num);
 
     return 0;
 }
