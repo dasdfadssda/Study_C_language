@@ -137,7 +137,7 @@ void ReadAgeTable(char filename[])
     fscanf(fp, "max_age %d", &max_age);
     
     //initialize age_table
-    for (int i = 1; i <= max_age; i++) {
+     for (int i = 1; i <= max_age; i++) {
         for (int j = 0; j < no_category; j++) {
             fscanf(fp, "%d", &age_table[i][j]);
         }
