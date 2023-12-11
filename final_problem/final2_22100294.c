@@ -43,8 +43,7 @@ char digit_strings[][16] = {
 int GetDigit(int x, int place);
 int CountDigit(int x);
 
-int main()
-{
+int main(){
     int x = 0;
     printf("Input an integer: ");
     scanf("%d", &x);
@@ -54,50 +53,51 @@ int main()
     //         for x == 70239, num_str should be "seven zero two three nine"
     char num_str[256] = "";
 
+    //  Initialize count
     int count = 1; // DO NOT modify this line
     // TO DO: find the number of digits (implement here)
 
+    //  Find the number of digits in x
     count = CountDigit(x);
 
-    for (int i = count - 1; i >= 0; i--)
-    {
+    for (int i = count-1; i >= 0; i--){
+
+        //  Initialize idx
         int idx = 0;
         // TO DO: get idx to retrieve substring (implement here)
+
+        // Get the index of the current digit
         idx = GetDigit(x, i);
 
-
+        // Append digit_strings[idx] to num_str
         strcat(num_str, digit_strings[idx]);
-        if (i > 0) {
-            strcat(num_str, " ");
-        }
+        if (i > 0)
+            strcat(num_str," ");
     }
 
+    // print x, num_str
     printf("%d = [%s]\n", x, num_str); // TO DO modify this line
 
     return 0;
 }
 
-int GetDigit(int x, int place)
-{
-    // If place is bigger than 0, divide x wirh 10 and decrease place 1.
-    while (place > 0)
-    {
-        x /= 10;
-        place--;
+int GetDigit(int x, int place){
+
+    while (place > 0){
+        // Divide x by 10 and place -1
+        x = x / 10;
+        place = place - 1;
     }
     return x % 10;
 }
 
-int CountDigit(int x)
-{
-    int num = 0;
-    while (x != 0)
-    {
-        // Increase for get digit
-        num++; 
-         // Move next digit
-        x /= 10;
-    }
+int CountDigit(int x){
 
+    // Initialize num = 0 and update x by dividing it by 10
+    int num = 0;
+    while (x != 0){
+        x = x / 10;
+        num = num + 1; 
+    }
     return num;
 }

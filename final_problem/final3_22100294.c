@@ -48,41 +48,32 @@ int main()
     FILE *fp = NULL;
     fp = fopen(FILE_NAME, "r");
     int ch; 
-    if (fp == NULL)
-    {
-        printf("Failed to open file contact.txt\n");
-        return -1;
+     if (fp == NULL) {
+        printf("Failed to open file %s in Line %d of file %s\n",
+                FILE_NAME, __LINE__, __FILE__);
+         exit(-1);
     }
-    //    while ((ch = fgetc(fp)) != EOF)
-    // {                    
-    //     fputc(ch, stdout); 
-    //     count++;
-    // }
-    printf("\n읽은 값은 %d\n",count);
 
-    //  read the # of data
-    // dynamically allocate memory to store the contact information
+    //  read data file 
+
+    // allocate memory
     int *ptr = (int *)malloc(5 * 4 * sizeof(int));
-    if (ptr == NULL)
-    {
-        //  - on failure in file open or memory allocation, display an error message and quit
+    if (ptr == NULL){
+        //  if memory allocation error, display an error message and quit
         printf("Failed to allocate memory in Line %d of file %s\n", __LINE__, __FILE__);
         exit(-1);
         return -1;
     }
 
-    for (int i = 1; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
+    for (int i = 1; i < 4; i++){
+        for (int j = 0; j < 4; j++){
             fscanf(fp, "%d", &ptr[i][j]);
             printf("\ntr[%d][%d] = %d\n", i,j, ptr[i][j]);
         }
     }
-    
+        
       for(int i = 0; i < 4; i++){
-        for (int j = 0; j < 4; j++)
-        {
+        for (int j = 0; j < 4; j++){
             contact->ID[i] = ptr[i][j]
             strcpy( contact->first[i], ptr[i][j]);
             strcpy( contact->last[i], ptr[i][j]);
@@ -90,7 +81,7 @@ int main()
         }
       }
 
-    // close the file
+     // close the file
     fclose(fp);
 
     // DO NOT modify the following two lines
@@ -98,29 +89,27 @@ int main()
     DisplayContact(contact, count);
 
     // TO DO: deallocate dynamically allocated memroy block and reset the pointer to NULL
-       free(ptr);
+    // free memory
+    free(ptr);
 
     return 0;
 }
 
-void DisplayContact(Contact contact[], int n)
-{
+void DisplayContact(Contact contact[], int n){
     // DO NOT modify this function
     printf("Totally, %d entries.\n", n);
     for (int i = 0; i < n; i++)
         printf("\t%s %s %s %s\n", contact[i].ID, contact[i].first, contact[i].last, contact[i].tel);
 }
 
-void SortContact(Contact contact[], int n)
-{
+void SortContact(Contact contact[], int n){
     // TO DO: sort contact by student ID as the above example using the algorithm in Chap. 8.
     //      Using other algorith will not be accepted
-     for (int i = 1; i < n - 1; i++)
-     {
-        for (int j = 0; j < n - 1 - i; j++)
-        {
-            if (contact->ID[j] > contact->ID[j + 1])
-            { // chage the item
+
+     for (int i = 1; i < n - 1; i++){
+        for (int j = 0; j < n - 1 - i; j++){
+            // Change the Item with ID sort
+            if (contact->ID[j] > contact->ID[j + 1]){ 
                 int temp = contact->ID[j];
                 contact->ID[j] = contact->ID[j + 1];
                 contact->ID[j + 1] = temp;
