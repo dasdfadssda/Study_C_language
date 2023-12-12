@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 void exchange(int *x, int *y);
 
 int main()
@@ -9,7 +8,7 @@ int main()
 
     // Input Num
     printf("숫자 2개를 입력해주세요.\n");
-    scanf("%d %d",&a,&b);
+    scanf("%d %d", &a, &b);
 
     exchange(&a, &b);
 
